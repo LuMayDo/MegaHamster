@@ -1,4 +1,5 @@
 <?php
+namespace Protonigramer\Megahamster;
 /**
  * Created by PhpStorm.
  * User: luizm
@@ -6,13 +7,14 @@
  * Time: 12:49
  */
 
-require_once "TrainingEstate.php";
-require_once "LivingEstate.php";
-
+/**
+ * Class RealEstate
+ * @package Protonigramer\Megahamster
+ */
 abstract class RealEstate {
     private $name;
     private $price;
-    private $specialEquipment = [];
+    private $specialEquipment;
 
     /**
      * RealEstate constructor.
@@ -23,7 +25,7 @@ abstract class RealEstate {
     public function __construct(String $name,float $price,String ...$equipments) {
         $this -> name = $name;
         $this -> price = $price;
-        array_push($this -> specialEquipment,$equipments);
+        $this -> specialEquipment = $equipments;
     }
 
     /**
@@ -52,7 +54,7 @@ abstract class RealEstate {
      * @return array
      */
     public function getSpecialEquipment() {
-            return $this->specialEquipment[0];
+            return $this->specialEquipment;
         }
 
     /**
@@ -60,15 +62,25 @@ abstract class RealEstate {
      */
     public function toHTML(): String {
             $name = $this->getName();
-            $price = $this->getPrice();
-            $area = $this->calculateArea();
-            $equipment = implode(", ", $this->getSpecialEquipment());
+            $price = number_format($this->getPrice(),2,",",".");
+            $area = number_format($this->calculateArea(),2,",",".");
+            $equipments = $this->getSpecialEquipment();
+            $stringEquip = "";
+            if (sizeof($equipments) > 0) {
+                foreach ($equipments as $element) {
+                    $stringEquip .= "<li>$element</li>";
+                }
+            } else $stringEquip = "<li>none</li>";
+
             return <<<ENDE
             <div class="product">
             <h1 class="h1-style-1">$name</h1>
             <p>EUR $price</p>
-            <p>Flächeninhalt: $area</p>
-            <p>Special Equipment: $equipment</p>
+            <p>Flächeninhalt: $area cm²</p>
+            <p>Speziale Austattung:</p>
+            <ul>
+                $stringEquip
+            </ul>
             </div>
 ENDE;
         }

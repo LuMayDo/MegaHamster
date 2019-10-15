@@ -1,0 +1,15 @@
+{
+    "name": "protonigramer/megahamster",
+    "description": "Autoloading for MegaHamster",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Luiz Mayer",
+            "email": "6317@htl.rennweg.at"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": { "Protonigramer\\Megahamster\\": "Classes/" }
+    }
+}

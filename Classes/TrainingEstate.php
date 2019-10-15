@@ -1,4 +1,5 @@
 <?php
+namespace Protonigramer\Megahamster;
 /**
  * Created by PhpStorm.
  * User: luizm
@@ -6,6 +7,10 @@
  * Time: 13:00
  */
 
+/**
+ * Class TrainingEstate
+ * @package Protonigramer\Megahamster
+ */
 class TrainingEstate extends RealEstate {
     private $sideLenght;
 

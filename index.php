@@ -17,14 +17,17 @@
     </header>
     <section id="list-products">
         <?php
-            require_once "Classes/RealEstate.php";
+            use Protonigramer\Megahamster AS Megahamster;
+            require_once "vendor/autoload.php";
+
             $array_products = [
-                    new LivingEstate("The Room",49,80,50,50),
-                    new LivingEstate("The Flat",149,120,80,80,"Food Jars"),
-                    new TrainingEstate("The Pit",69,20,"Hamster training gloves","Hamster punching sack")
+                    new Megahamster\LivingEstate("The Room",49,80,50,50),
+                    new Megahamster\LivingEstate("The Flat",149,120,80,80,"Food Jars"),
+                    new Megahamster\TrainingEstate("The Pit",69,20,"Hamster training gloves","Hamster punching sack")
             ];
 
             foreach ($array_products as $product) {
+                /* @var $product \Protonigramer\Megahamster\RealEstate */
                 echo $product->toHTML();
             }
 
