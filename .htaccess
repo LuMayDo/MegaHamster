@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteRule ^html$ ?format=html [QSA]
+RewriteRule ^json$ ?format=json [QSA]
+RewriteRule ^xml$ ?format=xml [QSA]
